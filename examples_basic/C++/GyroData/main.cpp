@@ -92,7 +92,7 @@ unique_ptr<void, void(*)(DataHandle)> hMotionData(IEE_MotionDataCreate(), &IEE_M
 
 void showGyro(bool consoler)
 {
-    IEE_MotionDataUpdateHandle(0, hMotionData.get());
+    IEE_MotionDataUpdateHandle(userID, hMotionData.get());
     unsigned int nSamplesTaken = 0;
     IEE_MotionDataGetNumberOfSample(hMotionData.get(), &nSamplesTaken);
 
@@ -109,7 +109,7 @@ void showGyro(bool consoler)
                     std::cout << "GyroX =" << data[sampleIdx];
                 if (i == 2 && consoler)
                 {
-                    std::cout << "GyroY =" << data[sampleIdx];
+                    std::cout << "  GyroY =" << data[sampleIdx];
                     std::cout << std::endl;
                 }
 
