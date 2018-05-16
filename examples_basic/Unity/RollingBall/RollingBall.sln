@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{7A914E0B-D984-744E-872D-C96918804C03}") = "RollingBall", "Assembly-CSharp.csproj", "{DDAB24FC-C364-25CD-AA0B-3C7FC74ECB2A}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingBall", "Assembly-CSharp.csproj", "{DDAB24FC-C364-25CD-AA0B-3C7FC74ECB2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

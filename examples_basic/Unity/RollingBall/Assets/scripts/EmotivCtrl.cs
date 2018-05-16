@@ -24,15 +24,15 @@ public class EmotivCtrl : MonoBehaviour {
 	void Awake () 
 	{	
 		engine = EmoEngine.Instance;
-		engine.UserAdded += new EmoEngine.UserAddedEventHandler (UserAddedEvent);
-		engine.UserRemoved += new EmoEngine.UserRemovedEventHandler (UserRemovedEvent);
-		engine.EmoEngineConnected += new EmoEngine.EmoEngineConnectedEventHandler (EmotivConnected);
-		engine.EmoEngineDisconnected += new EmoEngine.EmoEngineDisconnectedEventHandler (EmotivDisconnected);
-		engine.MentalCommandTrainingStarted += new EmoEngine.MentalCommandTrainingStartedEventEventHandler (TrainingStarted);
+		engine.UserAdded                      += new EmoEngine.UserAddedEventHandler (UserAddedEvent);
+		engine.UserRemoved 				      += new EmoEngine.UserRemovedEventHandler (UserRemovedEvent);
+		engine.EmoEngineConnected             += new EmoEngine.EmoEngineConnectedEventHandler (EmotivConnected);
+		engine.EmoEngineDisconnected          += new EmoEngine.EmoEngineDisconnectedEventHandler (EmotivDisconnected);
+		engine.MentalCommandTrainingStarted   += new EmoEngine.MentalCommandTrainingStartedEventEventHandler (TrainingStarted);
 		engine.MentalCommandTrainingSucceeded += new EmoEngine.MentalCommandTrainingSucceededEventHandler (TrainingSucceeded);
 		engine.MentalCommandTrainingCompleted += new EmoEngine.MentalCommandTrainingCompletedEventHandler (TrainingCompleted);
-		engine.MentalCommandTrainingRejected += new EmoEngine.MentalCommandTrainingRejectedEventHandler (TrainingRejected);
-		engine.MentalCommandTrainingReset += new EmoEngine.MentalCommandTrainingResetEventHandler (TrainingReset);
+		engine.MentalCommandTrainingRejected  += new EmoEngine.MentalCommandTrainingRejectedEventHandler (TrainingRejected);
+		engine.MentalCommandTrainingReset     += new EmoEngine.MentalCommandTrainingResetEventHandler (TrainingReset);
 		engine.Connect ();
 	}
 
@@ -87,11 +87,11 @@ public class EmotivCtrl : MonoBehaviour {
 
 	public bool CloudConnected()
 	{
-		if (EmotivCloudClient.EC_Connect () == Emotiv.EmotivCloudClient.EC_OK) {
+		if (EmotivCloudClient.EC_Connect () == Emotiv.EdkDll.EDK_OK) {
 			message_box.text = "Connection to server OK";
-			if (EmotivCloudClient.EC_Login (userName.text, password.text)== Emotiv.EmotivCloudClient.EC_OK) {
+			if (EmotivCloudClient.EC_Login (userName.text, password.text)== Emotiv.EdkDll.EDK_OK) {
 				message_box.text = "Login as " + userName.text;
-				if (EmotivCloudClient.EC_GetUserDetail (ref userCloudID) == Emotiv.EmotivCloudClient.EC_OK) {
+				if (EmotivCloudClient.EC_GetUserDetail (ref userCloudID) == Emotiv.EdkDll.EDK_OK) {
 					message_box.text = "CloudID: " + userCloudID;
 					return true;
 				}
@@ -110,9 +110,10 @@ public class EmotivCtrl : MonoBehaviour {
 
 	public void SaveProfile(){
 		if (CloudConnected ()) {
-			int profileId = EmotivCloudClient.EC_GetProfileId (userCloudID, profileName.text);
+			int profileId = -1;
+			EmotivCloudClient.EC_GetProfileId(userCloudID, profileName.text, ref profileId);
 			if (profileId >= 0) {
-				if (EmotivCloudClient.EC_UpdateUserProfile (userCloudID, (int)engineUserID, profileId) == Emotiv.EmotivCloudClient.EC_OK) {
+				if (EmotivCloudClient.EC_UpdateUserProfile (userCloudID, (int)engineUserID, profileId) == Emotiv.EdkDll.EDK_OK) {
 					message_box.text = "Profile updated";
 				} else {
 					message_box.text = "Error saving profile, aborting";
@@ -120,7 +121,7 @@ public class EmotivCtrl : MonoBehaviour {
 			} else {
 				if (EmotivCloudClient.EC_SaveUserProfile (
 					userCloudID, engineUserID, profileName.text, 
-					EmotivCloudClient.profileFileType.TRAINING) == Emotiv.EmotivCloudClient.EC_OK) {
+					EmotivCloudClient.profileFileType.TRAINING) == Emotiv.EdkDll.EDK_OK) {
 					message_box.text = "Profiled saved successfully";
 				} else {
 					message_box.text = "Error saving profile, aborting";
@@ -132,10 +133,13 @@ public class EmotivCtrl : MonoBehaviour {
 
 	public void LoadProfile(){
 		if (CloudConnected ()) {
+			int profileId = -1;
+			EmotivCloudClient.EC_GetProfileId(userCloudID, profileName.text, ref profileId);
+
 			if (EmotivCloudClient.EC_LoadUserProfile (
 				userCloudID, (int)engineUserID, 
-				EmotivCloudClient.EC_GetProfileId(userCloudID, profileName.text), 
-				(int)version) == Emotiv.EmotivCloudClient.EC_OK) {
+				profileId, 
+				(int)version) == Emotiv.EdkDll.EDK_OK) {
 				message_box.text = "Load finished";
 			} 
 			else {
