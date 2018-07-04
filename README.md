@@ -1,7 +1,5 @@
 # Emotiv SDK - Community Edition
 
----
-
 ### *End Of Life* :sob:
 *Today we are announcing the end of life (EOL) for the Emotiv SDK Community Edition. Version 3.5 will be the last major release. The planned final day will be 31st December 2018.*
 
