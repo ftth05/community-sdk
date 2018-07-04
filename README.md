@@ -1,5 +1,20 @@
 # Emotiv SDK - Community Edition
 
+---
+
+### *End Of Life* :sob:
+*Today we are announcing the end of life (EOL) for the Emotiv SDK Community Edition. Version 3.5 will be the last major release. The planned final day will be 31st December 2018.*
+
+*Developers should migrate their applications to work with our new Emotiv Cortex Service, which can be downloaded from our website at https://www.emotiv.com/developer/ .*
+
+*More examples and platforms support for Cortex will be added over the next few months.*
+
+*Cortex examples: https://github.com/Emotiv/cortex-example*
+
+*Cortex API docs: https://github.com/Emotiv/cortex-docs*
+
+---
+
 Here is the repository of the Emotiv SDK Community Edition, along with code examples and other development tools.
 * Supports EPOC (over Emotiv USB dongle)
 * Supports Insight and EPOC+ (over BTLE and Emotiv USB dongle)
