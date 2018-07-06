@@ -16,7 +16,7 @@ from utilities import *
 
 try:
     if sys.platform.startswith('win32'):
-        # If Your Python is 32bit version, load edk.dll from win32 folder instead
+        # If Your Python is 64-bit version, load edk.dll from win64 folder instead
         libEDK = cdll.LoadLibrary("../../bin/win32/edk.dll")
     elif sys.platform.startswith('linux'):
         srcDir = os.getcwd()
@@ -37,7 +37,7 @@ except Exception as e:
 userName = "your_username"
 password = "your_password"
 
-profileName = "profileName"
+profileName = "your_profile_name"
 
 # Training profile was saved with some kind of version control, but no API is exposed
 # Therefor you can only get the latest version of it
@@ -67,6 +67,9 @@ IS_MentalCommandGetCurrentActionPower.restype = c_float
 
 userID    = c_uint(0)
 ptrUserID = pointer(userID)
+
+profileID = c_uint(0)
+ptrProfileID = pointer(profileID)
 
 state           = c_int(0)
 mental_state    = c_int(0)
@@ -155,8 +158,6 @@ def handleMentalCommandEvent(cognitiveEvent):
 def parsecommand(inputs):
     wrongArgument = False
     commands = inputs.split()
-    profileID = c_int(0)
-    ptrProfileID = pointer(profileID)
 
     if commands[0] == "status":
         libEDK.IS_GetBatteryChargeLevel(eState, ptrChargeLevel, ptrMaxChargeLevel)
@@ -213,12 +214,13 @@ def parsecommand(inputs):
                     exit()
 
     elif commands[0] == "load":
-        getNumberProfile = libEDK.EC_GetAllProfileName(cloudUserID.value) # required
-        libEDK.EC_ProfileIDAtIndex(cloudUserID, profileName, ptrProfileID)
+        numberOfProfile = libEDK.EC_GetAllProfileName(cloudUserID.value)
+        libEDK.EC_GetProfileId(cloudUserID, profileName, ptrProfileID)
+        print "Profile ID: ", profileID.value
+        print "Profile Name: ", profileName
 
-        if getNumberProfile > 0:
-            profileID = libEDK.EC_ProfileIDAtIndex(cloudUserID.value, 0)
-            if libEDK.EC_LoadUserProfile(cloudUserID.value, userID.value, profileID, PROFILE_VERSION) == ErrorCodeEnum.EDK_OK:
+        if numberOfProfile > 0:
+            if libEDK.EC_LoadUserProfile(cloudUserID.value, userID.value, profileID.value, PROFILE_VERSION) == ErrorCodeEnum.EDK_OK:
                 print "Loading finished"
             else:
                 print "Loading failed"
