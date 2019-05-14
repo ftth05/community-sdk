@@ -1,0 +1,11 @@
+Mind Your OSCs 3.5.1.3
+
+1. Connect to Emotiv Xavier Controlpanel 3.5.x (CP)
+step 1: open CP, login a EmotivID
+step 2: open Mind Your OSCs, choose "Control Panel" tab, and click "Connect"
+step 3: click "Connect" in OSC tab
+
+2. Connect to "Emotiv Engine"
+step 1: open Mind Your OSCs, choose "Emotiv Engine", and click "Connect"
+step 2: click "Connect" in OSC tab
+
