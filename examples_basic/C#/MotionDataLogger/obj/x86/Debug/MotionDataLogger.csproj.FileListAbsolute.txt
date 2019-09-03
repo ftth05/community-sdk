@@ -1,0 +1,7 @@
+C:\Users\F3tt4H\Documents\community-sdk\bin\win32\MotionDataLogger.exe
+C:\Users\F3tt4H\Documents\community-sdk\bin\win32\MotionDataLogger.pdb
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\MotionDataLogger\obj\x86\Debug\MotionDataLogger.csprojAssemblyReference.cache
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\MotionDataLogger\obj\x86\Debug\MotionDataLogger.csproj.CoreCompileInputs.cache
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\MotionDataLogger\obj\x86\Debug\MotionDataLogger.csproj.CopyComplete
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\MotionDataLogger\obj\x86\Debug\MotionDataLogger.exe
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\MotionDataLogger\obj\x86\Debug\MotionDataLogger.pdb

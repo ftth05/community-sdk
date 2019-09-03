@@ -1,0 +1,6 @@
+C:\Users\F3tt4H\Documents\community-sdk\bin\win32\DotNetEmotivSDK.dll
+C:\Users\F3tt4H\Documents\community-sdk\bin\win32\DotNetEmotivSDK.pdb
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK.csprojAssemblyReference.cache
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK.csproj.CoreCompileInputs.cache
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK.dll
+C:\Users\F3tt4H\Documents\community-sdk\examples_basic\C#\DotNetEmotivSDK\obj\x86\Debug\DotNetEmotivSDK.pdb
